@@ -1,17 +1,24 @@
+# 服务配置
 server:
+  # 服务端口
   port: 2233
-  recommend_key: 7mN[5LU@;WVA9H0YhKZw=8GO&hJgVmNS
+  # 生成 Token 的密钥
   token_key: A9H0YhKZw=8GO&hJgVmNS
-  token_expire_duration: 1
+  # Token 过期时间，单位-天
+  token_expire_duration: 30
+  # 跨域配置
   cors:
+    # 跨域源
     origins:
       - http://localhost:3000
+    # 跨域请求头
     headers:
       - Content-Type
       - AccessToken
       - X-CSRF-Token
       - Authorization
       - Token
+    # 跨域请求方法
     methods:
       - POST
       - PUT
@@ -19,27 +26,34 @@ server:
       - GET
       - OPTIONS
 
+# MySQL 数据库配置
 mysql:
-  user: root
-  password: Chentyit123456
+  # 用户名
+  user: easy_blog
+  # 密码
+  password: easyblog123456
+  # 主机地址
   host: 127.0.0.1
+  # 端口
   port: 3306
-  database: new_start_page_server_db
+  # 数据库名
+  database: easy_blog
+  # 连接池最大连接数
   max_open: 10
+  # 连接池最大空闲连接数
   max_idle: 5
 
-redis:
-  host: localhost
-  port: 6379
-  password: LsGJUYELrEnDuXSoFndX
-  db_num: 5
-  pool_size: 10
-  key_prefix: start_page
-
+# 日志配置
 logger:
+  # 日志级别
   level: debug
-  path: /Users/chentianyi/Program/Goland-workplace/new-start-page-sever/log/new-start-server-dev.log
-  max_size: 100
+  # 日志文件路径
+  path: /Users/chentianyi/Program/Goland-workplace/easy-blog-sever/log/easy-blog-sever.log
+  # 日志文件最大大小，单位-MB
+  max_size: 3
+  # 日志文件最大备份数量
   max_backups: 30
+  # 日志文件最大保存时间，单位-天
   max_age: 7
+  # 是否压缩日志文件
   compress: true
