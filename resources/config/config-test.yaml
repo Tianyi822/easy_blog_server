@@ -29,7 +29,7 @@ server:
 # Sqlite 配置
 sqlite:
   # 数据库文件路径
-  path: /Users/chentianyi/Program/Goland-workplace/easy-blog-sever/db/data/easy-blog.db
+  data_path: /Users/chentianyi/Program/Goland-workplace/easy_blog_sever/db/data/easy_blog.db
   # 数据库名
   database: easy_blog
   # 连接池最大连接数
