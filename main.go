@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/Tianyi822/easy_blog_server/config"
+	"github.com/Tianyi822/easy_blog_server/db"
 	"github.com/Tianyi822/easy_blog_server/logger"
 )
 
@@ -25,6 +26,8 @@ func initServer(configPath string) {
 	config.LoadConfig(configPath)
 	// 初始化日志组件
 	logger.InitLogger()
+	// 连接 Sqlite 数据库
+	db.ConnectSqlite()
 }
 
 func main() {
