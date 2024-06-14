@@ -29,7 +29,7 @@ server:
 # Sqlite 配置
 sqlite:
   # 数据库文件路径
-  data_path: /Users/chentianyi/Program/Goland-workplace/easy_blog_sever/db/data/easy_blog.db
+  path: ../db/data/
   # 数据库名
   database: easy_blog
   # 连接池最大连接数
@@ -42,7 +42,7 @@ logger:
   # 日志级别
   level: debug
   # 日志文件路径
-  path: /Users/chentianyi/Program/Goland-workplace/easy_blog_sever/log/easy_blog_sever.log
+  path: ../log/easy_blog_sever.log
   # 日志文件最大大小，单位-MB
   max_size: 3
   # 日志文件最大备份数量
