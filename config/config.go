@@ -13,21 +13,21 @@ type CorsConfig struct {
 	Methods []string `yaml:"methods"`
 }
 
-type ServerConfig struct {
+type serverConfig struct {
 	Port                uint16     `yaml:"port"`
 	TokenKey            string     `yaml:"token_key"`
 	TokenExpireDuration int        `yaml:"token_expire_duration"` // token 过期时间，单位：天
 	Cors                CorsConfig `yaml:"cors"`
 }
 
-type SqliteConfig struct {
-	DataPath string `yaml:"data_path"`
+type sqliteConfig struct {
+	DataPath string `yaml:"path"`
 	DB       string `yaml:"database"`
 	MaxOpen  int    `yaml:"max_open"`
 	MaxIdle  int    `yaml:"max_idle"`
 }
 
-type LoggerConfig struct {
+type loggerConfig struct {
 	Level      string `yaml:"level"`
 	Path       string `yaml:"path"`
 	MaxAge     int    `yaml:"max_age"`
@@ -36,17 +36,17 @@ type LoggerConfig struct {
 	Compress   bool   `yaml:"compress"`
 }
 
-type ProjectConfig struct {
-	Server ServerConfig `yaml:"server"`
-	Sqlite SqliteConfig `yaml:"sqlite"`
-	Logger LoggerConfig `yaml:"logger"`
+type projectConfig struct {
+	Server serverConfig `yaml:"server"`
+	Sqlite sqliteConfig `yaml:"sqlite"`
+	Logger loggerConfig `yaml:"logger"`
 }
 
 var loadConfigLock sync.Once
 
-var ServerConf = new(ServerConfig)
-var SqliteConf = new(SqliteConfig)
-var LoggerConf = new(LoggerConfig)
+var ServerConf = new(serverConfig)
+var SqliteConf = new(sqliteConfig)
+var LoggerConf = new(loggerConfig)
 
 func LoadConfig(configFilePath string) {
 	loadConfigLock.Do(
@@ -59,7 +59,7 @@ func LoadConfig(configFilePath string) {
 			}
 
 			// 解析配置文件内容
-			conf := &ProjectConfig{}
+			conf := &projectConfig{}
 			err = yaml.Unmarshal(data, &conf)
 			if err != nil {
 				panic("Reflect config to Struct error")
