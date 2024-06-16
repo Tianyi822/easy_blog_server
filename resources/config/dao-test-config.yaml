@@ -1,0 +1,25 @@
+# Sqlite 配置
+sqlite:
+  # 数据库文件路径
+  path: ../../db/data/
+  # 数据库名
+  database: easy_blog
+  # 连接池最大连接数
+  max_open: 10
+  # 连接池最大空闲连接数
+  max_idle: 5
+
+# 日志配置
+logger:
+  # 日志级别
+  level: debug
+  # 日志文件路径
+  path: ../../log/easy_blog_sever.log
+  # 日志文件最大大小，单位-MB
+  max_size: 3
+  # 日志文件最大备份数量
+  max_backups: 30
+  # 日志文件最大保存时间，单位-天
+  max_age: 7
+  # 是否压缩日志文件
+  compress: true
