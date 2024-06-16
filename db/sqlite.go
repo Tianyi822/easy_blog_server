@@ -56,6 +56,28 @@ func ConnectSqlite() {
 			// 设置最大空闲连接数
 			sqlDB.SetMaxIdleConns(config.SqliteConf.MaxIdle)
 
+			// 创建文章表
+			result := db.Exec(
+				`
+					CREATE TABLE IF NOT EXISTS EASY_BLOG_ARTICLE (
+						aid 		TEXT PRIMARY KEY NOT NULL,
+						title 		TEXT NOT NULL,
+						brief_intro TEXT NOT NULL,
+						url 		TEXT NOT NULL,
+						salt 		TEXT NOT NULL,
+						create_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+						update_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+					);
+				`,
+			)
+			if result.Error != nil {
+				msg := "创建文章表失败: " + result.Error.Error()
+				logger.Error(msg)
+				panic(msg)
+			} else {
+				logger.Info("创建文章表成功")
+			}
+
 			SqliteDb = db
 		},
 	)
