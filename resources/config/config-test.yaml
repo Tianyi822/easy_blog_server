@@ -26,6 +26,14 @@ server:
       - GET
       - OPTIONS
 
+# 阿里云 OSS 配置
+oss:
+  endpoint:
+  region:
+  access_key_id:
+  access_key_secret:
+  bucket: easy-blog-test
+
 # Sqlite 配置
 sqlite:
   # 数据库文件路径
