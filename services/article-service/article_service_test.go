@@ -19,7 +19,6 @@ func init() {
 
 func TestAddArticle(t *testing.T) {
 	atDto := &dto.ArticleDto{
-		Aid:        "1",
 		Title:      "12345",
 		BriefIntro: "12345",
 		Url:        "12345",
