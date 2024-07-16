@@ -20,6 +20,14 @@ type serverConfig struct {
 	Cors                CorsConfig `yaml:"cors"`
 }
 
+type ossConfig struct {
+	Endpoint        string `yaml:"endpoint"`
+	Region          string `yaml:"region"`
+	AccessKeyId     string `yaml:"access_key_id"`
+	AccessKeySecret string `yaml:"access_key_secret"`
+	Bucket          string `yaml:"bucket"`
+}
+
 type sqliteConfig struct {
 	DataPath string `yaml:"path"`
 	DB       string `yaml:"database"`
@@ -38,6 +46,7 @@ type loggerConfig struct {
 
 type projectConfig struct {
 	Server serverConfig `yaml:"server"`
+	Oss    ossConfig    `yaml:"oss"`
 	Sqlite sqliteConfig `yaml:"sqlite"`
 	Logger loggerConfig `yaml:"logger"`
 }
@@ -45,6 +54,7 @@ type projectConfig struct {
 var loadConfigLock sync.Once
 
 var ServerConf = new(serverConfig)
+var OssConf = new(ossConfig)
 var SqliteConf = new(sqliteConfig)
 var LoggerConf = new(loggerConfig)
 
@@ -66,6 +76,7 @@ func LoadConfig(configFilePath string) {
 			}
 
 			ServerConf = &conf.Server
+			OssConf = &conf.Oss
 			SqliteConf = &conf.Sqlite
 			LoggerConf = &conf.Logger
 		},
