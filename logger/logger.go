@@ -42,6 +42,13 @@ func Warn(format string, args ...any) {
 	Log.Warnf(format, args...)
 }
 
+func Fatal(format string, args ...any) {
+	if Log == nil {
+		InitLogger()
+	}
+	Log.Fatalf(format, args...)
+}
+
 func Panic(format string, args ...any) {
 	if Log == nil {
 		InitLogger()
