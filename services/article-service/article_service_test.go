@@ -21,7 +21,7 @@ func TestAddArticle(t *testing.T) {
 	atDto := &dto.ArticleDto{
 		Title:      "12345",
 		BriefIntro: "12345",
-		Url:        "12345",
+		Content:    "12345",
 	}
 
 	AddArticle(atDto)

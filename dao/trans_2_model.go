@@ -9,6 +9,5 @@ func TransArticleDto2Dao(atDto *dto.ArticleDto) *article.ArticleDao {
 	return &article.ArticleDao{
 		Title:      atDto.Title,
 		BriefIntro: atDto.BriefIntro,
-		Url:        atDto.Url,
 	}
 }
